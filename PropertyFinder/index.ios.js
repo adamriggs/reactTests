@@ -2,26 +2,48 @@
 
 var React = require('react-native');
 var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
 } = React;
 
-var styles = StyleSheet.create({
-  text: {
-    color: 'black',
-    backgroundColor: 'white',
-    fontSize: 30,
-    margin: 80
-  }
+var SearchPage = require('./SearchPage');
+
+var styles = React.StyleSheet.create({
+    text: {
+        color: 'black',
+        backgroundColor: 'white',
+        fontSize: 30,
+        margin: 80
+    },
+    container: {
+        flex: 1
+    }
 });
 
-class PropertyFinderApp extends React.Component {
+class HelloWorld extends React.Component {
   render() {
-    return React.createElement(React.Text, {style: styles.text}, "Hello World!");
+    return <React.Text style = {styles.text} > Hello World(Again) </React.Text>;
   }
+};
+
+class PropertyFinderApp extends React.Component {
+    render() {
+        return ( 
+          <React.NavigatorIOS style = {
+                styles.container
+            }
+            initialRoute = {
+                {
+                    title: 'Property Finder',
+                    component: SearchPage,
+                }
+            }/>
+        );
+    }
 }
+
 
 AppRegistry.registerComponent('PropertyFinder', function() { return PropertyFinderApp });
 
